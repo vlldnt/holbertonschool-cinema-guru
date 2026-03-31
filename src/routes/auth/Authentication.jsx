@@ -2,14 +2,40 @@ import { useState } from 'react';
 import './auth.css';
 import Login from './Login';
 import Register from './Register';
+import axios from 'axios';
 
 function Authentication({ setIsLoggedIn, setUserUsername }) {
   const [_switch, setSwitch] = useState(true);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    if (!username || !password) {
+      setErrorMessage('Username or password empty');
+    }
+
+    try {
+      const res = await axios.post(
+        _switch
+          ? '/api/auth/login'
+          : '/api/auth/register',
+        { username, password },
+      );
+      if (res.status === 200 && res.data.accessToken) {
+        localStorage.setItem('accessToken', res.data.accessToken);
+        setUserUsername(username);
+        setIsLoggedIn(true);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
-    <form className="auth-form">
+    <form className="auth-form" onSubmit={handleSubmit}>
       <button
         className={`auth-button ${_switch ? 'auth-button-active' : ''}`}
         type="button"

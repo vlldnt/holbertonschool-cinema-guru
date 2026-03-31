@@ -28,14 +28,16 @@ function App() {
 
   return (
     <>
-      {isLoggedIn ? (
-        <p>Dashboard</p>
-      ) : (
-        <Authentication
-          setIsLoggedIn={setIsLoggedIn}
-          setUserUsername={setUserUsername}
-        />
-      )}
+      <main className="app-container">
+        {isLoggedIn ? (
+          <p>Dashboard</p>
+        ) : (
+          <Authentication
+            setIsLoggedIn={setIsLoggedIn}
+            setUserUsername={setUserUsername}
+          />
+        )}
+      </main>
     </>
   );
 }
