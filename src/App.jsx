@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Authentication from './routes/auth/Authentication';
+import Dashboard from './routes/dashboard/Dashbaord';
 import './App.css';
-import Header from './components/navigation/Header';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -35,7 +35,7 @@ function App() {
     <>
       <main className="app-container">
         {isLoggedIn ? (
-          <Header
+          <Dashboard
             userUsername={userUsername}
             setIsLoggedIn={setIsLoggedIn}
           />

@@ -1,10 +1,11 @@
-import Header from "../navigation/Header";
-import './dashboard.css'
+import Header from '../../components/navigation/Header';
+import './dashboard.css';
 
 function Dashboard({ userUsername, setIsLoggedIn }) {
-
   return (
-    <Header />
+    <div>
+      <Header userUsername={userUsername} setIsLoggedIn={setIsLoggedIn} />
+    </div>
   );
 }
 
