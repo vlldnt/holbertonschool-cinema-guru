@@ -1,0 +1,58 @@
+.auth-form {
+    width: 450px;
+}
+
+.auth-button {
+    width: 50%;
+    background-color: #BC020D;
+    border: none;
+    padding: 16px;
+    color: #efefef;
+}
+
+.auth-button-active {
+    background-color: #E31C25;
+}
+
+
+/* Login form styles */
+.login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    gap: 40px;
+}
+
+.inputs-containers {
+    width: 100%;
+    gap: 20px;
+}
+
+
+.login-container .button {
+    align-self: flex-end;
+
+}
+
+/* register form styles */
+.register-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    gap: 40px;
+}
+
+.inputs-containers {
+    width: 100%;
+    gap: 20px;
+}
+
+
+.register-container .button {
+    align-self: flex-end;
+
+}

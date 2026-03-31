@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import "./general.css"
+import './general.css';
 
 function Input({
   label,
