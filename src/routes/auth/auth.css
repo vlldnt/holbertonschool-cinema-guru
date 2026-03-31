@@ -1,5 +1,6 @@
 .auth-form {
     width: 450px;
+    height: 361px;
 }
 
 .auth-button {
@@ -21,8 +22,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 50px;
-    gap: 40px;
+    padding: 40px;
+    gap: 32px;
 }
 
 .inputs-containers {
@@ -42,8 +43,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 50px;
-    gap: 40px;
+    padding: 40px;
+    gap: 32px;
 }
 
 .inputs-containers {
