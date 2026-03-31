@@ -10,6 +10,10 @@ function App() {
   useEffect(() => {
     (async () => {
       const accessToken = localStorage.getItem('accessToken');
+      if (!accessToken) {
+        setIsLoggedIn(false);
+        return;
+      }
       try {
         const res = await axios.post(
           '/api/auth/',
@@ -30,7 +34,7 @@ function App() {
     <>
       <main className="app-container">
         {isLoggedIn ? (
-          <p>Dashboard</p>
+          <p style={{ color: "white" }}>Dashboard</p>
         ) : (
           <Authentication
             setIsLoggedIn={setIsLoggedIn}
