@@ -13,6 +13,7 @@ header {
 .header-title {
     color:#efefef;
     font-weight: 400;
+    margin-left: 10px;
 }
 
 .logout-container {
@@ -49,4 +50,31 @@ header {
 
 .logout-icon {
     color:#BB000E
+}
+
+/* SideBar Style */
+.sidebar-nav {
+    width: 60px;
+    min-height: calc(100vh - 62px);
+    background-color: #BB000E;
+    position: fixed;
+    left: 0;
+    top: 62px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.sidebar-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.sidebar-item {
+    color: #efefef;
+    font-size: 20px;
+    cursor: pointer;
 }

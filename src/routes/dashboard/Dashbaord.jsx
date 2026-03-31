@@ -1,10 +1,12 @@
 import Header from '../../components/navigation/Header';
+import SideBar from '../../components/navigation/SideBar';
 import './dashboard.css';
 
 function Dashboard({ userUsername, setIsLoggedIn }) {
   return (
-    <div>
+    <div className='dashboard-container'>
       <Header userUsername={userUsername} setIsLoggedIn={setIsLoggedIn} />
+      <SideBar username={userUsername}/>
     </div>
   );
 }
