@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Authentication from './routes/auth/Authentication';
 import './App.css';
+import Header from './components/navigation/Header';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -34,7 +35,10 @@ function App() {
     <>
       <main className="app-container">
         {isLoggedIn ? (
-          <p style={{ color: "white" }}>Dashboard</p>
+          <Header
+            userUsername={userUsername}
+            setIsLoggedIn={setIsLoggedIn}
+          />
         ) : (
           <Authentication
             setIsLoggedIn={setIsLoggedIn}
