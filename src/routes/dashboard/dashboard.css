@@ -1,0 +1,20 @@
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.page-container {
+    margin-top: 62px;
+    flex: 1;
+    padding: 20px;
+    background-color: #222222;
+    transition: margin-left 0.3s ease;
+}
+
+.page-container-small {
+    margin-left: 50px;
+}
+
+.page-container-large {
+    margin-left: 218px;
+}

@@ -22,18 +22,19 @@ const mockActivities = [
   { username: 'laura', movieTitle: 'Parasite' },
 ];
 
-function SideBar({ username }) {
+function SideBar({ username, small, setSmall }) {
   const [selected, setSelected] = useState('Home');
-  const [small, setSmall] = useState(true);
-  const [activities, setActivities] = useState([]);
-  const [showActivities, setShowActivities] = useState(false);
+  const [activities, setActivities] = useState(mockActivities);
 
   const navigate = useNavigate();
 
   useEffect(() => {
     axios.get('/api/activity')
-      .then(response => setActivities(response.data))
-      .catch(() => setActivities(mockActivities));
+      .then(response => {
+        if (response.data && response.data.length > 0)
+          setActivities(response.data);
+      })
+      .catch(() => {});
   }, []);
 
   function setPage(pageName) {
@@ -72,20 +73,18 @@ function SideBar({ username }) {
           <span className="sidebar-label">Watch Later</span>
         </li>
       </ul>
-      {!small && (
-        <div className="sidebar-activities">
-          <h2 className="sidebar-activities-title">Latest Activities</h2>
-          <ul className="movie-list">
-            {activities.slice(-10).map((activity, index) => (
-              <Activity
-                key={index}
-                username={activity.username}
-                movieTitle={activity.movieTitle}
-              />
-            ))}
-          </ul>
-        </div>
-      )}
+      <div className={`sidebar-activities ${small ? 'sidebar-activities-hidden' : ''}`}>
+        <h2>Latest Activities</h2>
+        <ul className="movie-list">
+          {activities.slice(-10).map((activity, index) => (
+            <Activity
+              key={index}
+              username={activity.username}
+              movieTitle={activity.movieTitle}
+            />
+          ))}
+        </ul>
+      </div>
     </nav>
   );
 }

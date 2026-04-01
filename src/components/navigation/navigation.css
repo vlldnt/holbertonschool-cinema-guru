@@ -63,7 +63,8 @@ header {
     flex-direction: column;
     align-items: flex-start;
     padding-top: 20px;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
     transition: width 0.05s ease;
     z-index: 100;
 }
@@ -130,6 +131,10 @@ header {
     overflow-y: auto;
     flex: 1;
     box-sizing: border-box;
+}
+
+.sidebar-activities-hidden {
+    display: none;
 }
 
 .sidebar-nav h2 {
