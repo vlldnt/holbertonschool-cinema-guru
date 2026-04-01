@@ -1,36 +1,40 @@
 import { useState } from 'react';
-import Tag from '../../components/movies/Tag';
-import './../../components/movies/movies.css'
+import Filter from '../../components/movies/Filter';
+import MovieCard from '../../components/movies/MovieCard';
 
-const GENRES_LIST = [
-  'Action',
-  'Drama',
-  'Comedy',
-  'Biography',
-  'Romance',
-  'Thriller',
-  'War',
-  'History',
-  'Sport',
-  'Sci-Fi',
-  'Documentary',
-  'Crime',
-  'Fantasy',
-];
+const TEST_MOVIE = {
+  imdbId: 'tt0111161',
+  title: 'The Shawshank Redemption',
+  synopsis:
+    'Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.',
+  genres: ['drama', 'crime'],
+  imageurls: [
+    'https://m.media-amazon.com/images/M/MV5BOTAzODEzNDAzMl5BMl5BanBnXkFtZTgwMDU1MTgzNzE@._V1_.jpg',
+  ],
+};
 
 function HomePage() {
+  const [title, setTitle] = useState('');
+  const [minYear, setMinYear] = useState('');
+  const [maxYear, setMaxYear] = useState('');
+  const [sort, setSort] = useState('');
   const [genres, setGenres] = useState([]);
 
   return (
     <div className="homepage-container">
-      <div className="homepage-filters">
-        
-      </div>
-      <ul className='genres-list'>
-        {GENRES_LIST.map((genre) => (
-          <Tag key={genre} genre={genre} genres={genres} setGenres={setGenres} />
-        ))}
-      </ul>
+      <Filter
+        title={title}
+        setTitle={setTitle}
+        minYear={minYear}
+        setMinYear={setMinYear}
+        maxYear={maxYear}
+        setMaxYear={setMaxYear}
+        sort={sort}
+        setSort={setSort}
+        genres={genres}
+        setGenres={setGenres}
+      />
+      <MovieCard movie={TEST_MOVIE} />
     </div>
   );
 }

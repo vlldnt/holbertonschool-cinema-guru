@@ -1,8 +1,8 @@
+import axios from 'axios';
 import { useState } from 'react';
 import './auth.css';
 import Login from './Login';
 import Register from './Register';
-import axios from 'axios';
 
 function Authentication({ setIsLoggedIn, setUserUsername }) {
   const [_switch, setSwitch] = useState(true);
