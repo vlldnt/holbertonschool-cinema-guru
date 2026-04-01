@@ -80,7 +80,6 @@ header {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 20px;
     padding: 0;
     width: 100%;
 }
@@ -94,11 +93,11 @@ header {
     justify-content: flex-start;
     gap: 12px;
     white-space: nowrap;
-    padding: 16px 15px;
+    padding: 8px 15px;
     background-color: transparent;
     width: 100%;
     box-sizing: border-box;
-    height: 56px;
+    height: 48px;
 }
 
 .sidebar-small .sidebar-item {
