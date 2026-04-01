@@ -1,0 +1,31 @@
+.activity-item {
+    background-color: #2C2C2C;
+    color: white;
+    padding: 3px;
+    margin-bottom: 10px;
+}
+
+.span-activity {
+    color: #F31D27;
+}
+
+.date-activity {
+    font-style: italic;
+}
+
+.sidebar-nav h2 {
+    text-decoration: underline;
+    color: white;
+    font-size: 24px;
+    font-weight: 200;
+    background-color: #2C2C2C;
+    width: 100%;
+    text-align: center;
+    margin-top: 12px;
+}
+
+.movie-list {
+    padding: 4px;
+    background-color: #2C2C2C;
+}
+

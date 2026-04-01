@@ -15,6 +15,7 @@ function Authentication({ setIsLoggedIn, setUserUsername }) {
 
     if (!username || !password) {
       setErrorMessage('Username or password empty');
+      return;
     }
 
     try {
@@ -24,8 +25,9 @@ function Authentication({ setIsLoggedIn, setUserUsername }) {
           : '/api/auth/register',
         { username, password },
       );
-      if (res.status === 200 && res.data.accessToken) {
+      if (res.data.accessToken) {
         localStorage.setItem('accessToken', res.data.accessToken);
+        axios.defaults.headers.common['Authorization'] = `Bearer ${res.data.accessToken}`;
         setUserUsername(username);
         setIsLoggedIn(true);
       }

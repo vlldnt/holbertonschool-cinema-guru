@@ -23,6 +23,7 @@ function App() {
             headers: { Authorization: `Bearer ${accessToken}` },
           },
         );
+        axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
         setIsLoggedIn(true);
         setUserUsername(res.data.username);
       } catch (error) {
