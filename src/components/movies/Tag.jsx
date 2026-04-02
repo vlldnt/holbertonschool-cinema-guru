@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function Tag({ genre, filter, genres = [], setGenres }) {
+function Tag({ genre, filter, genres = [], setGenres, filled }) {
   const [selected, setSelected] = useState(false);
 
   function handleTag() {
@@ -13,7 +13,7 @@ function Tag({ genre, filter, genres = [], setGenres }) {
     }
   }
 
-  return <li className={`tag-item${selected ? ' selected-item' : ''}`} onClick={handleTag}>{genre}</li>;
+  return <li className={`tag-item${selected ? ' selected-item' : ''}${filled ? ' filled' : ''}`} onClick={handleTag}>{genre}</li>;
 }
 
 export default Tag;

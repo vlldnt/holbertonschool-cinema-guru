@@ -18,3 +18,31 @@
 .page-container-large {
     margin-left: 218px;
 }
+
+.favorites-container {
+    text-align: center;
+}
+
+.favorites-title {
+    font-size: 63px;
+    color: white;
+    margin-top: 60px;
+    margin-bottom: 40px;
+    text-underline-offset: 20px;
+    text-decoration: underline;
+    text-decoration-color: red;
+}
+
+.watchlater-container {
+    text-align: center;
+}
+
+.watchlater-title {
+    font-size: 63px;
+    color: white;
+    margin-top: 60px;
+    margin-bottom: 40px;
+    text-underline-offset: 20px;
+    text-decoration: underline;
+    text-decoration-color: red;
+}

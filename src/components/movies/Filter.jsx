@@ -20,7 +20,12 @@ const GENRES_LIST = [
   'fantasy',
 ];
 
-const SORT_OPTIONS = ['Latest', 'Oldest', 'Highest Rated', 'Lowest Rated'];
+const SORT_OPTIONS = [
+  { label: 'Latest', value: 'latest' },
+  { label: 'Oldest', value: 'oldest' },
+  { label: 'Highest Rated', value: 'highestrated' },
+  { label: 'Lowest Rated', value: 'lowestrated' },
+];
 
 function Filter({
   minYear,

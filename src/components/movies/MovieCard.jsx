@@ -1,39 +1,19 @@
-import { useState, useEffect } from 'react';
 import { faClockFour, faStar } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
 import Tag from './Tag';
 import './movies.css';
 
-function MovieCard({ movie }) {
-  const [isFavorite, setIsFavorite] = useState(false);
-  const [isWatchLater, setIsWatchLater] = useState(false);
-
-  useEffect(() => {
-    axios
-      .get('/api/titles/favorite/')
-      .then((response) => {
-        setIsFavorite(response.data.some((m) => m.imdbId === movie.imdbId));
-      })
-      .catch(() => {});
-
-    axios
-      .get('/api/titles/watchlater/')
-      .then((response) => {
-        setIsWatchLater(response.data.some((m) => m.imdbId === movie.imdbId));
-      })
-      .catch(() => {});
-  }, [movie.imdbId]);
+function MovieCard({ movie = {}, favorites = [], watchLater = [], refreshLists }) {
+  const isFavorite = favorites.some((m) => m.imdbId === movie.imdbId);
+  const isWatchLater = watchLater.some((m) => m.imdbId === movie.imdbId);
 
   function handleClick(type) {
     const isActive = type === 'favorite' ? isFavorite : isWatchLater;
     const method = isActive ? 'delete' : 'post';
 
-    axios[method](`/api/titles/${type}/${movie.imdbId}`)
-      .then(() => {
-        if (type === 'favorite') setIsFavorite(!isFavorite);
-        else setIsWatchLater(!isWatchLater);
-      })
+    axios[method](`/api/titles/${type}`, { imdbId: movie.imdbId })
+      .then(() => refreshLists())
       .catch(() => {});
   }
 
@@ -53,18 +33,14 @@ function MovieCard({ movie }) {
           />
         </div>
         {movie.imageurls && movie.imageurls[0] && (
-          <img
-            className="card-image"
-            src={movie.imageurls[0]}
-            alt={movie.title}
-          />
+          <img className="card-image" src={movie.imageurls[0]} alt={movie.title} />
         )}
         <h2 className="card-title">{movie.title}</h2>
       </div>
       <p className="card-synopsis">{movie.synopsis}</p>
-      <ul className="genres-list">
-        {movie.genres.map((genre) => (
-          <Tag key={genre} genre={genre} />
+      <ul className="genres-card">
+        {movie.genres && movie.genres.map((genre) => (
+          <Tag key={genre} genre={genre} filled={true} />
         ))}
       </ul>
     </li>

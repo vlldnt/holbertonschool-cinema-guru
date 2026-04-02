@@ -8,6 +8,7 @@ header {
     background-color: #151515;
     min-width: 100%;
     padding-inline: 3rem;
+    z-index: 1000;
 }
 
 .header-title {

@@ -16,11 +16,18 @@
     background-color: red;
 }
 
+.filled {
+    background-color: red;
+    border-color: red;
+}
+
 .genres-list {
     display: flex;
     flex-wrap: wrap;
     width: 500px;
     gap: 10px;
+    margin: auto;
+    ;
 }
 
 .filter-container {
@@ -115,7 +122,32 @@
 }
 
 .card-synopsis {
-    
+    color: white;
+    font-size: 12px;
+    margin-top: 5px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 
+.genres-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    gap: 10px
+}
+
+.filled {
+    background-color: red;
+}
+
+.movies-displayed {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    padding: 10px;
+}

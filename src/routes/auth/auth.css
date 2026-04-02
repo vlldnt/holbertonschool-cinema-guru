@@ -36,6 +36,11 @@
     gap: 20px;
 }
 
+.login-container .input,
+.register-container .input {
+    background-color: white;
+    color: black;
+}
 
 .login-container .button {
     align-self: flex-end;
