@@ -1,41 +1,14 @@
 import { faFolder, faStar } from '@fortawesome/free-solid-svg-icons';
 import { faClockFour } from '@fortawesome/free-solid-svg-icons/faClockFour';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import Activity from '../Activity';
 import './navigation.css';
 
-const mockActivities = [
-  { username: 'alice', movieTitle: 'Inception' },
-  { username: 'bob', movieTitle: 'The Dark Knight' },
-  { username: 'carol', movieTitle: 'Interstellar' },
-  { username: 'dave', movieTitle: 'Pulp Fiction' },
-  { username: 'eve', movieTitle: 'The Matrix' },
-  { username: 'frank', movieTitle: 'Fight Club' },
-  { username: 'grace', movieTitle: 'Forrest Gump' },
-  { username: 'heidi', movieTitle: 'The Godfather' },
-  { username: 'ivan', movieTitle: 'Goodfellas' },
-  { username: 'judy', movieTitle: "Schindler's List" },
-  { username: 'karl', movieTitle: 'The Silence of the Lambs' },
-  { username: 'laura', movieTitle: 'Parasite' },
-];
-
-function SideBar({ username, small, setSmall }) {
+function SideBar({ username, small, setSmall, activities = [] }) {
   const [selected, setSelected] = useState('Home');
-  const [activities, setActivities] = useState(mockActivities);
-
   const navigate = useNavigate();
-
-  useEffect(() => {
-    axios.get('/api/activity')
-      .then(response => {
-        if (response.data && response.data.length > 0)
-          setActivities(response.data);
-      })
-      .catch(() => {});
-  }, []);
 
   function setPage(pageName) {
     setSelected(pageName);
@@ -76,11 +49,12 @@ function SideBar({ username, small, setSmall }) {
       <div className={`sidebar-activities ${small ? 'sidebar-activities-hidden' : ''}`}>
         <h2>Latest Activities</h2>
         <ul className="movie-list">
-          {activities.slice(-10).map((activity, index) => (
+          {activities.slice(0, 10).map((activity, index) => (
             <Activity
               key={index}
-              username={activity.username}
-              movieTitle={activity.movieTitle}
+              username={activity.user?.username || username}
+              movieTitle={activity.title?.title || activity.movieTitle}
+              activityType={activity.activityType}
             />
           ))}
         </ul>

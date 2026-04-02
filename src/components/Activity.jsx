@@ -1,23 +1,30 @@
 import './components.css';
 
-const date = new Date();
-const formattedDate = date.toLocaleDateString('en-US', {
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric',
-});
+const activityLabels = {
+  favorite: 'added to favorites',
+  removeFavorited: 'removed from favorites',
+  watchLater: 'added to watch later',
+  removeWatchLater: 'removed from watch later',
+};
 
-function Activity({ username, movieTitle }) {
+function Activity({ username, movieTitle, activityType }) {
+  const date = new Date();
+  const formattedDate = date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+
+  const label = activityLabels[activityType] || 'interacted with';
+
   return (
-    <>
-      <li className='activity-item'>
-        <p>
-          <span className="span-activity">{username}</span> added{' '}
-          <span className="span-activity">{movieTitle}</span> to watch
-          later - <span className="date-activity">{formattedDate}</span>
-        </p>
-      </li>
-    </>
+    <li className='activity-item'>
+      <p>
+        <span className="span-activity">{username}</span> {label}{' '}
+        <span className="span-activity">{movieTitle}</span> -{' '}
+        <span className="date-activity">{formattedDate}</span>
+      </p>
+    </li>
   );
 }
 

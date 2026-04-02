@@ -10,11 +10,14 @@ function MovieCard({ movie = {}, favorites = [], watchLater = [], refreshLists }
 
   function handleClick(type) {
     const isActive = type === 'favorite' ? isFavorite : isWatchLater;
-    const method = isActive ? 'delete' : 'post';
+    const tok = localStorage.getItem('accessToken');
+    const headers = { Authorization: `Bearer ${tok}` };
 
-    axios[method](`/api/titles/${type}`, { imdbId: movie.imdbId })
-      .then(() => refreshLists())
-      .catch(() => {});
+    const request = isActive
+      ? axios.delete(`/api/titles/${type}/${movie.imdbId}`, { headers })
+      : axios.post(`/api/titles/${type}/${movie.imdbId}`, {}, { headers });
+
+    request.then(() => refreshLists()).catch(() => {});
   }
 
   return (

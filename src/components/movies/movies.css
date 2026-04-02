@@ -147,7 +147,8 @@
 
 .movies-displayed {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(5, 300px);
+    justify-content: center;
     gap: 10px;
     padding: 10px;
 }
