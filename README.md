@@ -1,3 +1,26 @@
+# Cinema Guru
+
+A movie discovery and watchlist app built with React + Vite.
+
+## Installation
+
+The backend and PostgreSQL run in Docker. The frontend must be run **outside Docker** — it proxies `/api` calls to the Docker bridge address `172.17.0.1:8000`.
+
+**1. Start the backend**
+```bash
+docker compose up -d
+```
+
+**2. Start the frontend**
+```bash
+npm install
+npm run dev
+```
+
+App available at **http://localhost:5173**
+
+---
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
