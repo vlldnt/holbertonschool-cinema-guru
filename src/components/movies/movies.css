@@ -130,6 +130,7 @@
     line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    padding: 0 5px;
 }
 
 
